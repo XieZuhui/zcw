@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
-    <meta charset="GB18030">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -18,50 +18,50 @@
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
-          <div><a class="navbar-brand" href="index.html" style="font-size:32px;">ÖÚ³ïÍø-´´Òâ²úÆ·ÖÚ³ïÆ½Ì¨</a></div>
+          <div><a class="navbar-brand" href="index.html" style="font-size:32px;">ä¼—ç­¹ç½‘-åˆ›æ„äº§å“ä¼—ç­¹å¹³å°</a></div>
         </div>
       </div>
     </nav>
 
     <div class="container">
 
-      <form class="form-signin" action="/reg.do" role="form">
-        <h2 class="form-signin-heading"><i class="glyphicon glyphicon-log-in"></i> ÓÃ»§×¢²á</h2>
+      <form id="userFrom" class="form-signin" action="/reg.do" role="form">
+        <h2 class="form-signin-heading"><i class="glyphicon glyphicon-log-in"></i> ç”¨æˆ·æ³¨å†Œ</h2>
 		  <div class="form-group has-success has-feedback">
-			<input type="text" name="loginacct" class="form-control" id="inputSuccess4" placeholder="ÇëÊäÈëµÇÂ¼ÕËºÅ" autofocus>
+			<input type="text" name="loginacct" class="form-control" id="loginacct" placeholder="è¯·è¾“å…¥ç™»å½•è´¦å·" autofocus>
 			<span class="glyphicon glyphicon-user form-control-feedback"></span>
 		  </div>
           <div class="form-group has-success has-feedback">
-              <input type="text" name="username" class="form-control" id="inputSuccess4" placeholder="ÇëÊäÈëÓÃ»§Ãû" autofocus>
+              <input type="text" name="username" class="form-control" id="username" placeholder="è¯·è¾“å…¥ç”¨æˆ·å" autofocus>
               <span class="glyphicon glyphicon-user form-control-feedback"></span>
           </div>
 		  <div class="form-group has-success has-feedback">
-			<input type="password" name="userpswd" class="form-control" id="inputSuccess4" placeholder="ÇëÊäÈëµÇÂ¼ÃÜÂë" style="margin-top:10px;">
+			<input type="password" name="userpswd" class="form-control" id="userpswd" placeholder="è¯·è¾“å…¥ç™»å½•å¯†ç " style="margin-top:10px;">
 			<span class="glyphicon glyphicon-lock form-control-feedback"></span>
 		  </div>
           <div class="form-group has-success has-feedback">
-              <input type="password" name="reuserpswd" class="form-control" id="inputSuccess4" placeholder="ÇëÊäÈëµÇÂ¼ÃÜÂë" style="margin-top:10px;">
+              <input type="password" name="reuserpswd" class="form-control" id="reuserpswd" placeholder="è¯·è¾“å…¥ç™»å½•å¯†ç " style="margin-top:10px;">
               <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
 		  <div class="form-group has-success has-feedback">
-			<input type="text" name="email" class="form-control" id="inputSuccess4" placeholder="ÇëÊäÈëÓÊÏäµØÖ·" style="margin-top:10px;">
+			<input type="text" name="email" class="form-control" id="email" placeholder="è¯·è¾“å…¥é‚®ç®±åœ°å€" style="margin-top:10px;">
 			<span class="glyphicon glyphicon glyphicon-envelope form-control-feedback"></span>
 		  </div>
 		  <div class="form-group has-success has-feedback">
 			<select class="form-control" >
-                <option>»áÔ±</option>
-                <option>¹ÜÀí</option>
+                <option>ä¼šå‘˜</option>
+                <option>ç®¡ç†</option>
             </select>
 		  </div>
         <div class="checkbox">
           <label>
-            Íü¼ÇÃÜÂë
+            å¿˜è®°å¯†ç 
           </label>
           <label style="float:right">
-            <a href="login.html">ÎÒÓĞÕËºÅ</a>
+            <a href="login.html">æˆ‘æœ‰è´¦å·</a>
           </label>
         </div>
-        <a class="btn btn-lg btn-success btn-block" onclick="fromSubmit()" href="javascript:void(0)" > ×¢²á</a>
+        <a class="btn btn-lg btn-success btn-block" onclick="fromSubmit()"  > æ³¨å†Œ</a>
       </form>
     </div>
     <script src="../jquery/jquery-2.1.1.min.js"></script>
@@ -69,7 +69,7 @@
     <script type="text/javascript">
         function fromSubmit(){
             var formObj=document.getElementById("userFrom");
-            formObj.submit();//ÊÖ¶¯Ìá½»±íµ¥
+            formObj.submit();//æ‰‹åŠ¨æäº¤è¡¨å•
         }
     </script>
   </body>

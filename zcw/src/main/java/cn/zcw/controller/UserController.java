@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class UserController {
@@ -18,7 +17,7 @@ public class UserController {
     @RequestMapping("/reg.do")
     public String doRegist(User user){
         userService.regist(user);
-        return "sendRedirect:/managers/login.jsp";
+        return "redirect:/managers/login.html";
     }
 
    /* @RequestMapping("/login.do")

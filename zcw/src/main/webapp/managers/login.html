@@ -58,11 +58,25 @@
     </div>
     <script src="../jquery/jquery-2.1.1.min.js"></script>
     <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <script src="../jquery/layer/layer.js"></script>
     <script>
     function dologin() {
-
         var loginacct = $("#loginacct");
         var userpswd = $("#userpswd");
+        if(loginacct.val()==""){
+            layer.msg("用户名不能为空！",{time:2000,icon:5,shift:6},function () {
+                loginacct.focus();
+            })
+            return;
+        }
+        if(userpswd.val()==""){
+            layer.msg("密码不能为空！",{time:2000,icon:5,shift:6},function () {
+                userpswd.focus();
+            })
+            return;
+        }
+
+
         $.ajax({
             url:"/login.do",
             type:"POST",
@@ -72,7 +86,11 @@
                 "userpswd":userpswd.val()
 
             },
+            beforeSend: function () {
+                loadingIndex = layer.msg('处理中',{icon:16});
+            },
             success:function (result) {
+                layer.close(loadingIndex);
                 if(result.success){
                     window.location.href = "/index.html";
                 }else{

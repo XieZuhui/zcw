@@ -4,6 +4,7 @@ import cn.zcw.bean.User;
 import cn.zcw.bean.UserExample;
 import cn.zcw.mapper.UserMapper;
 import cn.zcw.service.UserService;
+import cn.zcw.util.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +16,7 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     public int regist(User user) {
-
+        user.setUserpswd(MD5Util.digest(user.getUserpswd()));
         return userMapper.insertSelective(user);
     }
 
@@ -26,6 +27,7 @@ public class UserServiceImpl implements UserService {
      * -1登录失败，1登录成功
      */
     public int doLogin(User user){
+        user.setUserpswd(MD5Util.digest(user.getUserpswd()));
         UserExample userExample = new UserExample();
         userExample.createCriteria().andLoginacctEqualTo(user.getLoginacct());
         List<User> list = userMapper.selectByExample(userExample);
