@@ -28,9 +28,11 @@
     <!--拦截器-->
     <!-- <mvc:interceptors> &lt;!&ndash;可配置多个拦截器,顺序执行 &ndash;&gt; <mvc:interceptor> <mvc:mapping path="/product/**"/>&lt;!&ndash;如果不配置或/*,将拦截所有的Controller &ndash;&gt; <bean class="manage.base.interceptor.PermissionInterceptor"></bean> </mvc:interceptor> </mvc:interceptors>-->
 
-    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-        <property name="maxUploadSize">
-            <value>5242880</value>
-        </property>
-    </bean>
+<!--
+    <bean id="multipartResolver"  class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        &lt;!&ndash; 设定默认编码 &ndash;&gt;
+        <property name="defaultEncoding" value="UTF-8"></property>
+        &lt;!&ndash; 设定文件上传的最大值为5MB，5*1024*1024 &ndash;&gt;
+        <property name="maxUploadSize" value="5242880"></property>
+    </bean>-->
 </beans>

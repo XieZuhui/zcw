@@ -13,6 +13,20 @@
     <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="createtime" jdbcType="CHAR" property="createtime" />
   </resultMap>
+
+  <resultMap id="UserVo" type="cn.zcw.bean.UserVo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="loginacct" jdbcType="VARCHAR" property="loginacct" />
+    <result column="userpswd" jdbcType="CHAR" property="userpswd" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="createtime" jdbcType="CHAR" property="createtime" />
+    <result column="roleid" property="roleid"/>
+  </resultMap>
+
+  <select id="selectUserRole" parameterType="cn.zcw.bean.User" resultMap="UserVo">
+    SELECT * from t_use,t_user_role where t_user.lo
+  </select>
   <sql id="Example_Where_Clause">
     <!--
       WARNING - @mbggenerated
