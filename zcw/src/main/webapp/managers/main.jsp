@@ -1,3 +1,11 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 2019/8/24 0024
+  Time: 16:02
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="UTF-8">
 <head>
@@ -36,7 +44,7 @@
                 <li style="padding-top:8px;">
                     <div class="btn-group">
                         <button id="userText" type="button" class="btn btn-default btn-success dropdown-toggle" data-toggle="dropdown">
-                            <i class="glyphicon glyphicon-user"></i> 张三 <span class="caret"></span>
+                            <i class="glyphicon glyphicon-user"></i>${loginedUser}<span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="#"><i class="glyphicon glyphicon-cog"></i> 个人设置</a></li>
@@ -63,14 +71,14 @@
         <div class="col-sm-3 col-md-2 sidebar">
             <div class="tree">
                 <ul style="padding-left:0px;" class="list-group">
-                    <li class="list-group-item tree-closed" >
+                    <li class="list-group-item tree-closed" onclick="openMenu()">
                         <a href="main.html"><i class="glyphicon glyphicon-dashboard"></i> 控制面板</a>
                     </li>
                     <li class="list-group-item tree-closed">
-                        <span><i class="glyphicon glyphicon glyphicon-tasks"></i> 权限管理 <span class="badge" style="float:right">3</span></span>
+                        <span ><i class="glyphicon glyphicon glyphicon-tasks"></i> 权限管理 <span class="badge" style="float:right">3</span></span>
                         <ul style="margin-top:10px;display:none;">
                             <li style="height:30px;">
-                                <a  href="javascript:void(0);" onclick="loadHtml(this)" ><i class="glyphicon glyphicon-user"></i>
+                                <a  href="user2.html;" target="mainframe" ><i class="glyphicon glyphicon-user"></i>
                                     <input name="path" type="hidden" value="user2.html"/>用户维护</a>
                             </li>
                             <li style="height:30px;">
@@ -130,91 +138,42 @@
             </div>
         </div>
         <div id="lableText" name="view_frame" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <iframe name="mainframe"
+                    scrolling="no" src="first.html" width="100%" height="100%" frameborder="0"/>
 
-                <h1 class="page-header">控制面板</h1>
-
-                <div class="row placeholders">
-                    <div class="col-xs-6 col-sm-3 placeholder">
-                        <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-                        <h4>Label</h4>
-                        <span class="text-muted">Something else</span>
-                    </div>
-                    <div class="col-xs-6 col-sm-3 placeholder">
-                        <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-                        <h4>Label</h4>
-                        <span class="text-muted">Something else</span>
-                    </div>
-                    <div class="col-xs-6 col-sm-3 placeholder">
-                        <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-                        <h4>Label</h4>
-                        <span class="text-muted">Something else</span>
-                    </div>
-                    <div class="col-xs-6 col-sm-3 placeholder">
-                        <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-                        <h4>Label</h4>
-                        <span class="text-muted">Something else</span>
-                    </div>
-
-            </div>
         </div>
     </div>
 </div>
 <div id="context">
 
 </div>
-<script src="../jquery/jquery-2.1.1.min.js"></script>
-<script src="../bootstrap/js/bootstrap.min.js"></script>
-<script src="../script/docs.min.js"></script>
-<script src="../jquery/layer/layer.js"></script>
-
-<script type="text/javascript">
-    $(function () {
-       // $("#lableText").load('first.html');
-        $(".list-group-item").click(function(){
-            if ( $(this).find("ul") ) {
-                $(this).toggleClass("tree-closed");
-                if ( $(this).hasClass("tree-closed") ) {
-                    $("ul", this).hide("fast");
-                } else {
-                    $("ul", this).show("fast");
-                }
-            }
-
-        });
-
-
-
-        $.ajax({
-            url:"/getUsername.do",
-            type:"POST",
-            dataType:"json",
-            success:function (result) {
-
-                if(result.success){
-                    var username = result.username;
-                    //alert(username);
-                    $("#userText").html("<i class='glyphicon glyphicon-user'></i>"+username+"<span class='caret'></span>");
-                }else{
-                    layer.msg("请稍等。。。",{time:2000,icon:5,shift:6});
-                    window.location.href = "login.html";
-                }
-            },
-            error:function () {
-                layer.msg("请稍等。。。",{time:2000,icon:5,shift:6});
-                window.location.href = "login.html";
-            }
-        });
-
-
-
-    });
-
-
-    function loadHtml(ob) {
-        var pagepath=$(ob).children("input[name='path']").val();
-
-        $("#lableText").load(pagepath);
+<script type="text/javascript" src="../jquery/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../script/docs.min.js"></script>
+<script type="text/javascript" src="../jquery/layer/layer.js"></script>
+<script type="text/javascript" src="../script/evenUser.js"/>
+<script type="text/javascript" type="text/javascript">
+  $(function () {
+// $("#lableText").load('first.html');
+$(".list-group-item").click(function(){
+    if ( $(this).find("ul") ) {
+        $(this).toggleClass("tree-closed");
+        if ( $(this).hasClass("tree-closed") ) {
+            $("ul", this).hide("fast");
+        } else {
+            $("ul", this).show("fast");
+        }
     }
+
+});
+
+
+
+
+
+});
+
 </script>
 </body>
 </html>
+

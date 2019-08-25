@@ -19,7 +19,7 @@
     <!--静态资源访问-->
     <!--开通静态资源的访问-->
     <mvc:default-servlet-handler />
-    <mvc:resources  location="/statics/" mapping="/statics/**"/>
+
     <!--视图解析器-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 <!--   <property name="prefix" value="/"/>
