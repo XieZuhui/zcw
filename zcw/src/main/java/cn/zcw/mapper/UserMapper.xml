@@ -114,6 +114,9 @@
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
+    <if test="leftLimit != null and limitSize!= null">
+      limit ${leftLimit},${limitSize}
+    </if>
     <if test="orderByClause != null">
       order by ${orderByClause}
     </if>

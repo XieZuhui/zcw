@@ -3,9 +3,9 @@
 <html lang="GB18030">
 <head>
 
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/font-awesome.min.css">
-    <link rel="stylesheet" href="../css/carousel.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/carousel.css">
     <style>
         h3 {
             font-weight:bold;
@@ -617,10 +617,10 @@
 </div><!-- /.container -->
 
 
-<script src="../jquery/jquery-2.1.1.min.js"></script>
-<script src="../bootstrap/js/bootstrap.min.js"></script>
-<script src="../script/docs.min.js"></script>
-<script src="../script/back-to-top.js"></script>
+<script src="jquery/jquery-2.1.1.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="script/docs.min.js"></script>
+<script src="script/back-to-top.js"></script>
 <script>
     $(".thumbnail img").css("cursor", "pointer");
     $(".thumbnail img").click(function(){

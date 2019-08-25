@@ -64,6 +64,7 @@
       <table tableName="t_type" domainObjectName="Type"></table>
       <table tableName="t_user" domainObjectName="User"></table>
       <table tableName="t_user_role" domainObjectName="User_role"></table>-->
-      <table tableName="t_project_member" domainObjectName="Project_member"></table>
+     <!-- <table tableName="t_project_member" domainObjectName="Project_member"></table>t_member-->
+       <table tableName="t_member" domainObjectName="Member"></table>
    </context>
 </generatorConfiguration>

@@ -50,6 +50,7 @@
 				</form>
 			  </div>
 			</div>
+				<div><span id="testBody"></span></div>
       </div>
     </div>
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -82,7 +83,15 @@
     <script src="../bootstrap/js/bootstrap.min.js"></script>
 	<script src="../script/docs.min.js"></script>
         <script type="text/javascript">
+			function GetQueryString(name) {
+				var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+				var r = window.location.search.substr(1).match(reg);//search,查询？后面的参数，并匹配正则
+				if(r!=null)return unescape(r[2]); return null;
+			}
 
+			$(function () {
+				alert(GetQueryString(userid));
+			});
         </script>
   </body>
 </html>

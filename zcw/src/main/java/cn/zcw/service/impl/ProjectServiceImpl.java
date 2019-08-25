@@ -40,12 +40,10 @@ public class ProjectServiceImpl implements ProjectService {
     public String saveProject(Map<String, String> map){
         String str = null;
         try{
-
         if(map != null) {
             // 如果有新的要添加的标签 则 添加标签数据
             //添加项目数据  生成新的项目id
             int pid=addProject(map);
-
             System.out.println("PID:"+pid);
             if(pid!=0) {
                 //根据添加新的项目id 添加两个中间表数据 t_project_tag、t_project_type
@@ -66,7 +64,6 @@ public class ProjectServiceImpl implements ProjectService {
     }catch(Exception e) {
         e.printStackTrace();
     }
-
         return  str;
     }
 
