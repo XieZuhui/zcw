@@ -1,6 +1,5 @@
 package cn.zcw.mapper;
 
-import cn.zcw.bean.Datas;
 import cn.zcw.bean.Type;
 import cn.zcw.bean.TypeExample;
 import java.util.List;
@@ -94,6 +93,4 @@ public interface TypeMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(Type record);
-
-	int deletes(Datas ds);
 }

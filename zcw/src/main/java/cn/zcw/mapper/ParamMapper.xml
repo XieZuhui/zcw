@@ -112,12 +112,6 @@
     from t_param
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deletes">
-  	delete from t_param where id in 
-  	<foreach collection="ids" item="id" open="(" close=")" separator=",">
-  		#{id}
-  	</foreach>
-  </delete>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     <!--
       WARNING - @mbggenerated
