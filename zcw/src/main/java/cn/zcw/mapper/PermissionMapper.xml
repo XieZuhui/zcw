@@ -113,12 +113,6 @@
     from t_permission
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <select id="queryChildPermissions" resultMap="BaseResultMap">
-  	select * from t_permission where pid = #{pid}
-  </select>
-  <select id="queryPermissionIdsByRoleid" resultType="int">
-  	select permissionid from t_role_permission where roleid = #{roleid}
-  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     <!--
       WARNING - @mbggenerated

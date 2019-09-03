@@ -93,8 +93,4 @@ public interface PermissionMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(Permission record);
-
-	List<Permission> queryChildPermissions(Integer id);
-
-	List<Integer> queryPermissionIdsByRoleid(Integer roleid);
 }
