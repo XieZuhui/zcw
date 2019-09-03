@@ -44,13 +44,4 @@ public class Project_type {
 
     public Project_type() {
     }
-
-    @Override
-    public String toString() {
-        return "Project_type{" +
-                "id=" + id +
-                ", projectid=" + projectid +
-                ", typeid=" + typeid +
-                '}';
-    }
 }

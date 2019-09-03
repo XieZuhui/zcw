@@ -1,12 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Administrator
-  Date: 2019/8/27 0027
-  Time: 11:03
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="GB18030">
 <head>
@@ -110,34 +102,10 @@
                     <a class="navbar-brand" href="index.html" style="font-size:32px;">众筹网-创意产品众筹平台</a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse" style="float:right;">
-                    <c:if test="${loginedUser==null}">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a href="/managers/login.html">登录</a></li>
-                            <li><a href="/managers/reg.html">注册</a></li>
-                        </ul>
-                    </c:if>
-                    <c:if test="${loginedUser!=null}">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li style="padding-top:8px;">
-                                <div class="btn-group">
-                                    <button id="userText" type="button" class="btn btn-default btn-success dropdown-toggle" data-toggle="dropdown">
-                                        <i class="glyphicon glyphicon-user"></i>${loginedUser.username} <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li><a href="/member/member.jsp"><i class="glyphicon glyphicon-cog"></i> 个人设置</a></li>
-                                        <li><a href="#"><i class="glyphicon glyphicon-comment"></i> 消息</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="index.html"><i class="glyphicon glyphicon-off"></i> 退出系统</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li style="margin-left:10px;padding-top:8px;">
-                                <button type="button" class="btn btn-default btn-danger">
-                                    <span class="glyphicon glyphicon-question-sign"></span> 帮助
-                                </button>
-                            </li>
-                        </ul>
-                    </c:if>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/managers/login.jsp">登录</a></li>
+                        <li><a href="/managers/reg.jsp">注册</a></li>
+                    </ul>
                 </div>
             </div>
         </nav>
@@ -156,13 +124,13 @@
         <li data-target="#myCarousel" data-slide-to="2"></li>
     </ol>
     <div class="carousel-inner" role="listbox">
-        <div class="item active" onclick="window.location.href='project.jsp'" style="cursor:pointer;">
+        <div class="item active" onclick="window.location.href='project.html'" style="cursor:pointer;">
             <img src="img/carousel-1.jpg" alt="First slide">
         </div>
-        <div class="item" onclick="window.location.href='project.jsp'" style="cursor:pointer;">
+        <div class="item" onclick="window.location.href='project.html'" style="cursor:pointer;">
             <img src="img/carousel-2.jpg" alt="Second slide">
         </div>
-        <div class="item" onclick="window.location.href='project.jsp'" style="cursor:pointer;">
+        <div class="item" onclick="window.location.href='project.html'" style="cursor:pointer;">
             <img src="img/carousel-3.jpg" alt="Third slide">
         </div>
     </div>
@@ -189,19 +157,19 @@
             <img class="img-circle" src="img/p1.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;">
             <h2>智能高清监控机器人</h2>
             <p>可爱的造型，摄像安防远程互联的全能设计，让你随时随地守护您的家人，陪伴你的生活。</p>
-            <p><a class="btn btn-default" href="/member/project.jsp" role="button">项目详情 &raquo;</a></p>
+            <p><a class="btn btn-default" href="project.html" role="button">项目详情 &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
             <img class="img-circle" src="img/p2.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;">
             <h2>NEOKA智能手环</h2>
             <p>要运动更要安全，这款、名为“蝶舞”的NEOKA-V9100智能运动手环为“安全运动而生”。</p>
-            <p><a class="btn btn-default" href="/member/project.jsp" role="button">项目详情 &raquo;</a></p>
+            <p><a class="btn btn-default" href="project.html" role="button">项目详情 &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
             <img class="img-circle" src="img/p3.png" alt="Generic placeholder image" style="width: 140px; height: 140px;">
             <h2>驱蚊扣</h2>
             <p>随处使用的驱蚊纽扣，<br>解决夏季蚊虫问题。</p>
-            <p><a class="btn btn-default" href="/member/project.jsp" role="button">项目详情 &raquo;</a></p>
+            <p><a class="btn btn-default" href="project.html" role="button">项目详情 &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
     </div><!-- /.row -->
 
@@ -211,20 +179,20 @@
                 <div class="box ui-draggable" id="mainBox">
                     <div class="mHd" style="">
                         <div class="path">
-                            <a href="member/projects.jsp">更多...</a>
+                            <a href="projects.html">更多...</a>
                         </div>
                         <h3>
                             科技 <small style="color:#FFF;">开启智慧未来</small>
                         </h3>
                     </div>
                     <div class="mBd" style="padding-top:10px;">
-                        <div class="row" id="science">
+                        <div class="row">
                             <div class="col-md-3">
                                 <div class="thumbnail">
                                     <img alt="300x200" src="img/product-1.jpg" />
                                     <div class="caption">
                                         <h3 class="break">
-                                            <a href="project.jsp">活性富氢净水直饮机</a>
+                                            <a href="project.html">活性富氢净水直饮机</a>
                                         </h3>
                                         <p>
                                         <div style="float:left;"><i class="glyphicon glyphicon-screenshot" title="目标金额" ></i> $20,000 </div>
@@ -266,7 +234,7 @@
                                     <img alt="300x200" src="img/product-3.png" />
                                     <div class="caption">
                                         <h3 class="break">
-                                            <a href="project.jsp">小熊猫鱼眼全景安防摄像机</a>
+                                            <a href="project.html">小熊猫鱼眼全景安防摄像机</a>
                                         </h3>
                                         <p>
                                         <div style="float:left;"><i class="glyphicon glyphicon-screenshot" title="目标金额" ></i> $20,000 </div>
@@ -287,7 +255,7 @@
                                     <img alt="300x200" src="img/product-4.jpg" />
                                     <div class="caption">
                                         <h3 class="break">
-                                            <a href="project.jsp">一款精致的机械表</a>
+                                            <a href="project.html">一款精致的机械表</a>
                                         </h3>
                                         <p>
                                         <div style="float:left;"><i class="glyphicon glyphicon-screenshot" title="目标金额" ></i> $20,000 </div>
@@ -317,20 +285,20 @@
                 <div class="box ui-draggable" id="mainBox">
                     <div class="mHd" style="">
                         <div class="path">
-                            <a href="member/projects.jsp">更多...</a>
+                            <a href="projects.html">更多...</a>
                         </div>
                         <h3>
                             设计 <small style="color:#FFF;">创意改变生活</small>
                         </h3>
                     </div>
                     <div class="mBd" style="padding-top:10px;">
-                        <div class="row" id="design">
+                        <div class="row">
                             <div class="col-md-3">
                                 <div class="thumbnail">
                                     <img alt="300x200" src="img/product-5.jpg" />
                                     <div class="caption">
                                         <h3 class="break">
-                                            <a href="project.jsp">活性富氢净水直饮机</a>
+                                            <a href="project.html">活性富氢净水直饮机</a>
                                         </h3>
                                         <p>
                                         <div style="float:left;"><i class="glyphicon glyphicon-screenshot" title="目标金额" ></i> $20,000 </div>
@@ -351,7 +319,7 @@
                                     <img alt="300x200" src="img/product-6.jpg" />
                                     <div class="caption">
                                         <h3 class="break">
-                                            <a href="project.jsp">酷驰触控龙头，智享厨房黑科技</a>
+                                            <a href="project.html">酷驰触控龙头，智享厨房黑科技</a>
                                         </h3>
                                         <p>
                                         <div style="float:left;"><i class="glyphicon glyphicon-screenshot" title="目标金额" ></i> $20,000 </div>
@@ -393,7 +361,7 @@
                                     <img alt="300x200" src="img/product-8.jpg" />
                                     <div class="caption">
                                         <h3 class="break">
-                                            <a href="project.jsp">一款精致的机械表</a>
+                                            <a href="project.html">一款精致的机械表</a>
                                         </h3>
                                         <p>
                                         <div style="float:left;"><i class="glyphicon glyphicon-screenshot" title="目标金额" ></i> $20,000 </div>
@@ -423,20 +391,20 @@
                 <div class="box ui-draggable" id="mainBox">
                     <div class="mHd" style="">
                         <div class="path">
-                            <a href="member/projects.jsp">更多...</a>
+                            <a href="projects.html">更多...</a>
                         </div>
                         <h3>
                             农业 <small style="color:#FFF;">网络天下肥美</small>
                         </h3>
                     </div>
                     <div class="mBd" style="padding-top:10px;">
-                        <div class="row" id="agriculture">
+                        <div class="row">
                             <div class="col-md-3">
                                 <div class="thumbnail">
                                     <img alt="300x200" src="img/product-9.jpg" />
                                     <div class="caption">
                                         <h3 class="break">
-                                            <a href="project.jsp">活性富氢净水直饮机</a>
+                                            <a href="project.html">活性富氢净水直饮机</a>
                                         </h3>
                                         <p>
                                         <div style="float:left;"><i class="glyphicon glyphicon-screenshot" title="目标金额" ></i> $20,000 </div>
@@ -457,7 +425,7 @@
                                     <img alt="300x200" src="img/product-2.gif" />
                                     <div class="caption">
                                         <h3 class="break">
-                                            <a href="project.jsp">酷驰触控龙头，智享厨房黑科技</a>
+                                            <a href="project.html">酷驰触控龙头，智享厨房黑科技</a>
                                         </h3>
                                         <p>
                                         <div style="float:left;"><i class="glyphicon glyphicon-screenshot" title="目标金额" ></i> $20,000 </div>
@@ -478,7 +446,7 @@
                                     <img alt="300x200" src="img/product-3.png" />
                                     <div class="caption">
                                         <h3 class="break">
-                                            <a href="project.jsp">小熊猫鱼眼全景安防摄像机</a>
+                                            <a href="project.html">小熊猫鱼眼全景安防摄像机</a>
                                         </h3>
                                         <p>
                                         <div style="float:left;"><i class="glyphicon glyphicon-screenshot" title="目标金额" ></i> $20,000 </div>
@@ -499,7 +467,7 @@
                                     <img alt="300x200" src="img/product-4.jpg" />
                                     <div class="caption">
                                         <h3 class="break">
-                                            <a href="project.jsp">一款精致的机械表</a>
+                                            <a href="project.html">一款精致的机械表</a>
                                         </h3>
                                         <p>
                                         <div style="float:left;"><i class="glyphicon glyphicon-screenshot" title="目标金额" ></i> $20,000 </div>
@@ -529,7 +497,7 @@
                 <div class="box ui-draggable" id="mainBox">
                     <div class="mHd" style="">
                         <div class="path">
-                            <a href="member/projects.html">更多...</a>
+                            <a href="projects.html">更多...</a>
                         </div>
                         <h3>
                             其他 <small style="color:#FFF;">发现更多惊喜</small>
@@ -542,7 +510,7 @@
                                     <img alt="300x200" src="img/product-1.jpg" />
                                     <div class="caption">
                                         <h3 class="break">
-                                            <a href="project.jsp">活性富氢净水直饮机</a>
+                                            <a href="project.html">活性富氢净水直饮机</a>
                                         </h3>
                                         <p>
                                         <div style="float:left;"><i class="glyphicon glyphicon-screenshot" title="目标金额" ></i> $20,000 </div>
@@ -563,7 +531,7 @@
                                     <img alt="300x200" src="img/product-2.gif" />
                                     <div class="caption">
                                         <h3 class="break">
-                                            <a href="project.jsp">酷驰触控龙头，智享厨房黑科技</a>
+                                            <a href="project.html">酷驰触控龙头，智享厨房黑科技</a>
                                         </h3>
                                         <p>
                                         <div style="float:left;"><i class="glyphicon glyphicon-screenshot" title="目标金额" ></i> $20,000 </div>
@@ -584,7 +552,7 @@
                                     <img alt="300x200" src="img/product-3.png" />
                                     <div class="caption">
                                         <h3 class="break">
-                                            <a href="project.jsp">小熊猫鱼眼全景安防摄像机</a>
+                                            <a href="project.html">小熊猫鱼眼全景安防摄像机</a>
                                         </h3>
                                         <p>
                                         <div style="float:left;"><i class="glyphicon glyphicon-screenshot" title="目标金额" ></i> $20,000 </div>
@@ -605,7 +573,7 @@
                                     <img alt="300x200" src="img/product-4.jpg" />
                                     <div class="caption">
                                         <h3 class="break">
-                                            <a href="project.jsp">一款精致的机械表</a>
+                                            <a href="project.html">一款精致的机械表</a>
                                         </h3>
                                         <p>
                                         <div style="float:left;"><i class="glyphicon glyphicon-screenshot" title="目标金额" ></i> $20,000 </div>
@@ -649,58 +617,15 @@
 </div><!-- /.container -->
 
 
-<script src="../jquery/jquery-2.1.1.min.js"></script>
-<script src="../bootstrap/js/bootstrap.min.js"></script>
-<script src="../script/docs.min.js"></script>
-<script src="../script/back-to-top.js"></script>
-<script src="../jquery/layer/layer.js"></script>
+<script src="jquery/jquery-2.1.1.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="script/docs.min.js"></script>
+<script src="script/back-to-top.js"></script>
 <script>
     $(".thumbnail img").css("cursor", "pointer");
     $(".thumbnail img").click(function(){
-        window.location.href = "/member/project.jsp";
+        window.location.href = "project.html";
     });
-
-        ajaxtype(4,science);
-        ajaxtype(6,design);
-        ajaxtype(2,agriculture);
-
-
-    function ajaxtype(type,contextLableId) {
-        $.ajax({
-            type:"POST",
-            url:"/Project/findProjectByType.do",
-            data:{
-                type:type
-            },
-            success:function (result) {
-                if(result.success){
-                    var projects = result.datas;
-                    var context = "";
-                    $.each(projects,function(i,pro){
-                        context+= '<div class="col-md-3">'
-                        context+= '<div class="thumbnail">'
-                        context+= '<img alt="300x200" src="'+pro.iconpath+'" />'
-                        context+= '<div class="caption">'
-                        context+= '<h3 class="break">'
-                        context+= '<a href="project.jsp">'+pro.name+'</a>'
-                        context+= '</h3>'
-                        context+= '<p>'
-                        context+= '<div style="float:left;"><i class="glyphicon glyphicon-screenshot" title="目标金额" ></i> $'+pro.money+' </div>'
-                        context+= '<div style="float:right;"><i title="截至日期" class="glyphicon glyphicon-calendar"></i> 2017-20-20 </div>'
-                        context+= '</p> <br>'
-                        context+= '<div class="progress" style="margin-bottom: 4px;">'
-                        context+= '<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">'
-                        context+= '<span >40% </span>'
-                        context+= '</div> </div>'
-                        context+= '<div><span style="float:right;"><i class="glyphicon glyphicon-star-empty" ></i></span>  <span ><i class="glyphicon glyphicon-user" title="支持人数"></i> '+pro.supporter+'</span> </div>'
-                        context+= '</div> </div> </div>'
-                    });
-                    var con = "#"+contextLableId;
-                    $(con).html(context);
-                }
-            }
-        })
-    }
 </script>
 </body>
 </html>

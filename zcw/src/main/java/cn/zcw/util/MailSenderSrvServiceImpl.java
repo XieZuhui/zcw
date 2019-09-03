@@ -92,14 +92,4 @@ public class MailSenderSrvServiceImpl implements IMailSenderSrvServices{
         sendEmail(to,subject,content);
     }
 
-    public void sendRealname(String recipient,String validateCode,String username) {
-        String to = recipient;  //收件人地址
-        String subject = "众筹网实名验证邮件";   //邮件标题
-        String content = "亲爱的"+username+",这是一个好网站<br>"+
-                "<h2>您的实名认证验证码为"+validateCode+"，请尽快进行验证</h2><br>" ;
-        sendEmail(to,subject,content);
-    }
-
-
-
 }

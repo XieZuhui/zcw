@@ -145,7 +145,7 @@
         }
         $.ajax({
             type:"POST",
-            url:"/managers/UserpageQuery.do",
+            url:"/UserpageQuery.do",
             cache : true,
             async : false,
             data:jsonData,
@@ -208,7 +208,7 @@
         var loginacct=$(ob).children("input[name='loginacct']").val();
         var username=$(ob).children("input[name='username']").val();
         var email=$(ob).children("input[name='email']").val();
-        window.location.href = "/managers/gotoEdit.do?id="+id+"&loginacct="+loginacct+"&username="+username
+        window.location.href = "/gotoEdit.do?id="+id+"&loginacct="+loginacct+"&username="+username
         +"&email="+email;
        }
 </script>

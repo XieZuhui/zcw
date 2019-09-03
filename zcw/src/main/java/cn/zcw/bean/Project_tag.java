@@ -39,13 +39,4 @@ public class Project_tag {
         this.projectid = projectid;
         this.tagid = tagid;
     }
-
-    @Override
-    public String toString() {
-        return "Project_tag{" +
-                "id=" + id +
-                ", projectid=" + projectid +
-                ", tagid=" + tagid +
-                '}';
-    }
 }

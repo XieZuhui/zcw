@@ -18,5 +18,4 @@ public interface IMailSenderSrvServices {
     void send(String recipient,String validateCode,String username);
 
     void sendGetBack(String recipient,String validateCode,String username);
-    void sendRealname(String recipient,String validateCode,String username);
 }
