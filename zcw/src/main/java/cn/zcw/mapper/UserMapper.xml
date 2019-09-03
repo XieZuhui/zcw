@@ -24,6 +24,17 @@
     <result column="roleid" property="roleid"/>
   </resultMap>
 
+  <!-- 通过userid ==> roleid ==> permissionid ==> List permissionList 查找集合数据-->
+  <select id="queryPermissionsByUserid" resultType="cn.zcw.bean.Permission">
+  	select * from t_permission 
+  	where id in (
+  		select permissionid from t_role_permission
+  		where roleid in (
+  			select roleid from t_user_role 
+  			where userid = #{userid}
+  		)
+  	)
+  </select>
   <select id="selectUserRole" parameterType="cn.zcw.bean.User" resultMap="UserVo">
     SELECT * from t_use,t_user_role where t_user.lo
   </select>
@@ -100,6 +111,9 @@
     -->
     id, loginacct, userpswd, username, email, createtime
   </sql>
+  <select id="queryRoleidsByUserid" resultType="int">
+  	select roleid from t_user_role where userid = #{userid}
+  </select>
   <select id="selectByExample" parameterType="cn.zcw.bean.UserExample" resultMap="BaseResultMap">
     <!--
       WARNING - @mbggenerated
@@ -114,7 +128,7 @@
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
-
+    
     <if test="orderByClause != null">
       order by ${orderByClause}
     </if>
@@ -132,6 +146,12 @@
     from t_user
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <delete id="deleteUserRoles">
+  	delete from t_user_role where userid = #{userid} and roleid in 
+  	<foreach collection="roleids" item="roleid" open="(" close=")" separator=",">
+  		#{roleid}
+  	</foreach>
+  </delete>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     <!--
       WARNING - @mbggenerated
@@ -150,6 +170,18 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
+  <delete id="deletes">
+  	delete from t_user where id in 
+  	<foreach collection="ids" item="id" open="(" close=")" separator=",">
+  		#{id}
+  	</foreach>
+  </delete>
+  <insert id="insertUserRoles">
+  	insert into t_user_role (userid, roleid) values 
+  	<foreach collection="roleids" item="roleid" separator=",">
+  		(#{userid}, #{roleid})
+  	</foreach>
+  </insert>
   <insert id="insert" parameterType="cn.zcw.bean.User">
     <!--
       WARNING - @mbggenerated

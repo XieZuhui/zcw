@@ -96,7 +96,7 @@
         }
         var id = $("#memberid");
         $.ajax({
-            url:"/member/updataMemberPwd.do",
+            url:"/updataMemberPwd.do",
             type:"POST",
             dataType:"json",
             data:{

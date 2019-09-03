@@ -1,10 +1,13 @@
 package cn.zcw.service;
 
+import cn.zcw.bean.Datas;
 import cn.zcw.bean.Member;
+import cn.zcw.bean.Permission;
 import cn.zcw.bean.User;
 import cn.zcw.util.PageBean;
 
 import java.util.List;
+import java.util.Map;
 
 public interface UserService {
 
@@ -23,4 +26,14 @@ public interface UserService {
     Member getMemberByValidateCode(String validateCode);
 
     int updateMemberPwd(Member member);
+    
+    int insert(User user);
+	User queryById(Integer id);
+	int update(User user);
+	int delete(Integer id);
+	int deletes(Datas ds);
+	int insertUserRoles(Map<String, Object> maps);
+	int deleteUserRoles(Map<String, Object> maps);
+	List<Integer> queryRoleidsByUserid(Integer id);
+	List<Permission> queryPermissionsByUserid(Integer id);
 }

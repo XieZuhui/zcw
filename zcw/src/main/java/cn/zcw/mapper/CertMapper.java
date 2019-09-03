@@ -2,6 +2,8 @@ package cn.zcw.mapper;
 
 import cn.zcw.bean.Cert;
 import cn.zcw.bean.CertExample;
+import cn.zcw.bean.Datas;
+
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -93,4 +95,6 @@ public interface CertMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(Cert record);
+
+	int deletes(Datas ds);
 }

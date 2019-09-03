@@ -7,7 +7,7 @@
     <!-- encoder 默认配置为PatternLayoutEncoder -->
         <encoder>
     <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{0} - %msg%n</pattern>
-    <charset>GBK</charset>
+    <charset>utf-8</charset>
             <!--改成utf-8时在控制台的日志会乱码-->
         </encoder>
 </appender>

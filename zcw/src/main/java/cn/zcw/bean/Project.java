@@ -199,27 +199,4 @@ public class Project {
     public void setAuthstatus(String authstatus) {
         this.authstatus = authstatus == null ? null : authstatus.trim();
     }
-
-    @Override
-    public String toString() {
-        return "Project{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", remark='" + remark + '\'' +
-                ", money=" + money +
-                ", day=" + day +
-                ", status='" + status + '\'' +
-                ", deploydate='" + deploydate + '\'' +
-                ", supportmoney=" + supportmoney +
-                ", supporter=" + supporter +
-                ", completion=" + completion +
-                ", memberid=" + memberid +
-                ", createdate='" + createdate + '\'' +
-                ", follower=" + follower +
-                ", iconpath='" + iconpath + '\'' +
-                ", imgpath='" + imgpath + '\'' +
-                ", icon='" + icon + '\'' +
-                ", authstatus='" + authstatus + '\'' +
-                '}';
-    }
 }
