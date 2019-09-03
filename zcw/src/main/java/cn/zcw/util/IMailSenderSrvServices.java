@@ -16,4 +16,6 @@ public interface IMailSenderSrvServices {
      * */
     void sendHtmlEmail(String recipient,String subject,String content) throws MessagingException, Exception;
     void send(String recipient,String validateCode,String username);
+
+    void sendGetBack(String recipient,String validateCode,String username);
 }
