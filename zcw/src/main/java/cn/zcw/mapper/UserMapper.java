@@ -1,12 +1,8 @@
 package cn.zcw.mapper;
 
-import cn.zcw.bean.Datas;
-import cn.zcw.bean.Permission;
 import cn.zcw.bean.User;
 import cn.zcw.bean.UserExample;
 import java.util.List;
-import java.util.Map;
-
 import org.apache.ibatis.annotations.Param;
 
 public interface UserMapper {
@@ -97,14 +93,4 @@ public interface UserMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(User record);
-
-	int deletes(Datas ds);
-
-	int insertUserRoles(Map<String, Object> maps);
-
-	int deleteUserRoles(Map<String, Object> maps);
-
-	List<Integer> queryRoleidsByUserid(Integer id);
-
-	List<Permission> queryPermissionsByUserid(Integer id);
 }

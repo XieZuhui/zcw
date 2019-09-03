@@ -11,6 +11,15 @@ public class Project_member {
         this.customertel = customertel;
     }
 
+    public Project_member( Integer memberid, String introduce, String particulars, String contacttel, String customertel) {
+        this.projectid = projectid;
+        this.memberid = memberid;
+        this.introduce = introduce;
+        this.particulars = particulars;
+        this.contacttel = contacttel;
+        this.customertel = customertel;
+    }
+
     public Project_member() {
     }
 
@@ -236,5 +245,18 @@ public class Project_member {
      */
     public void setCustomertel(String customertel) {
         this.customertel = customertel == null ? null : customertel.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "Project_member{" +
+                "id=" + id +
+                ", projectid=" + projectid +
+                ", memberid=" + memberid +
+                ", introduce='" + introduce + '\'' +
+                ", particulars='" + particulars + '\'' +
+                ", contacttel='" + contacttel + '\'' +
+                ", customertel='" + customertel + '\'' +
+                '}';
     }
 }

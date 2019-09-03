@@ -2,6 +2,8 @@ package cn.zcw.bean;
 
 import cn.zcw.util.PageBean;
 
+import java.util.List;
+
 /**
  * ajax结果
  */
@@ -10,18 +12,9 @@ public class AJAXResult<T> {
     private boolean success;
     private PageBean<T> pageBean;
     private String username;
-    private Object data;
-    
+    private List<T> datas;
 
-    public Object getData() {
-		return data;
-	}
-
-	public void setData(Object data) {
-		this.data = data;
-	}
-
-	public PageBean<T> getPageBean() {
+    public PageBean<T> getPageBean() {
         return pageBean;
     }
 
@@ -45,5 +38,13 @@ public class AJAXResult<T> {
 
     public void setSuccess(boolean success) {
         this.success = success;
+    }
+
+    public List<T> getDatas() {
+        return datas;
+    }
+
+    public void setDatas(List<T> datas) {
+        this.datas = datas;
     }
 }
