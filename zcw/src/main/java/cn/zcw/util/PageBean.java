@@ -26,7 +26,9 @@ public class PageBean<T> {
 		this.pageno = pageno;
 	}
 
-
+	public Integer getTotalno() {
+		return totalsize%pagesize==0?totalsize/pagesize:totalsize/pagesize+1;
+	}
 
 	public Integer getPagesize() {
 		return pagesize;
@@ -47,8 +49,5 @@ public class PageBean<T> {
 	public int getLeftLimit(){
 		return (pageno-1)*pagesize;
 	}
-
-	public Integer getTotalno() {
-		return totalsize%pagesize==0?totalsize/pagesize:totalsize/pagesize+1;
-	}
+	
 }

@@ -128,14 +128,4 @@ public class Member_cert {
     public void setIconpath(String iconpath) {
         this.iconpath = iconpath == null ? null : iconpath.trim();
     }
-
-    @Override
-    public String toString() {
-        return "Member_cert{" +
-                "id=" + id +
-                ", memberid=" + memberid +
-                ", certid=" + certid +
-                ", iconpath='" + iconpath + '\'' +
-                '}';
-    }
 }

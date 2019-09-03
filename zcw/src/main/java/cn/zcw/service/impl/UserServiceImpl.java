@@ -1,11 +1,12 @@
 package cn.zcw.service.impl;
 
+import cn.zcw.bean.Datas;
 import cn.zcw.bean.Member;
 import cn.zcw.bean.MemberExample;
+import cn.zcw.bean.Permission;
 import cn.zcw.bean.User;
 import cn.zcw.bean.UserExample;
 import cn.zcw.mapper.MemberMapper;
-import cn.zcw.mapper.Member_copyMapper;
 import cn.zcw.mapper.UserMapper;
 import cn.zcw.service.UserService;
 import cn.zcw.util.IMailSenderSrvServices;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Service;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -24,8 +26,6 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
     @Autowired
     private MemberMapper memberMapper;
-    @Autowired
-    private Member_copyMapper member_copyMapper;
     @Autowired
     private IMailSenderSrvServices mailsend;
 
@@ -128,12 +128,14 @@ public class UserServiceImpl implements UserService {
         pb.setPageno(pageno);
         pb.setPagesize(pageSize);
         if (querytext!=null && querytext.trim()!=""){
+        	
            userExample.createCriteria().andUsernameLike(querytext.trim());
            /* userExample.createCriteria().andEmailLike(querytext);
             userExample.createCriteria().andLoginacctLike(querytext);*/
         }
         userExample.setLeftLimit(pb.getPageno());
         userExample.setLimitSize(pb.getPagesize());
+        userExample.setOrderByClause("createtime DESC");
         System.out.println(userMapper.selectByExample(userExample).toString());
         pb.setTotalsize(userMapper.countByExample(userExample));
         pb.setDatas(userMapper.selectByExample(userExample));
@@ -233,4 +235,51 @@ public class UserServiceImpl implements UserService {
         int flag = memberMapper.updateByPrimaryKeySelective(member);
         return flag;
     }
+
+	@Override
+	public int insert(User user) {
+		return userMapper.insert(user);
+	}
+
+	@Override
+	public User queryById(Integer id) {
+		return userMapper.selectByPrimaryKey(id);
+	}
+
+	@Override
+	public int update(User user) {
+		return userMapper.updateByPrimaryKeySelective(user);
+	}
+
+	@Override
+	public int delete(Integer id) {
+		return userMapper.deleteByPrimaryKey(id);
+	}
+
+	@Override
+	public int deletes(Datas ds) {
+		return userMapper.deletes(ds);
+	}
+
+	@Override
+	public int insertUserRoles(Map<String, Object> maps) {
+		return userMapper.insertUserRoles(maps);
+	}
+
+	@Override
+	public int deleteUserRoles(Map<String, Object> maps) {
+		return userMapper.deleteUserRoles(maps);
+	}
+
+	@Override
+	public List<Integer> queryRoleidsByUserid(Integer id) {
+		return userMapper.queryRoleidsByUserid(id);
+	}
+
+	@Override
+	public List<Permission> queryPermissionsByUserid(Integer id) {
+		return userMapper.queryPermissionsByUserid(id);
+	}
+
+	
 }

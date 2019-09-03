@@ -1,8 +1,11 @@
 package cn.zcw.mapper;
 
+import cn.zcw.bean.Datas;
 import cn.zcw.bean.Role;
 import cn.zcw.bean.RoleExample;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface RoleMapper {
@@ -93,4 +96,14 @@ public interface RoleMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(Role record);
+
+	int deletes(Datas ds);
+
+	List<Integer> queryPermissionidsByRoleid(Integer id);
+
+	int insertRolePermissions(Map<String, Object> maps);
+
+	void deletePermissionsByRoleid(Map<String, Object> maps);
+
+
 }

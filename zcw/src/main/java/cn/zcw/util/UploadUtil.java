@@ -129,14 +129,7 @@ public class UploadUtil {
                     // 声明输出字节流
                     OutputStream out = new FileOutputStream(saveDir + "/" + fileName);     // 保存上传提交的文件地址
                     String key = fileItem.getFieldName();
-                    String s = saveDir + "/" + fileName;
-                    int begin=s.indexOf("\\upload");
-                    int last=s.length();
-                    System.out.println("=========================\n"+s.substring(begin,last));
-                    StringBuilder saveValue = new StringBuilder("..");
-                    saveValue.append(s.substring(begin,last));
-                    String value = saveValue.toString();
-                    value.replaceAll("\\\\","/");
+                    String value = saveDir + "/" + fileName;
                     value = new String(value.getBytes("iso-8859-1"),"Utf-8");
 
                     map.put(key, value);
