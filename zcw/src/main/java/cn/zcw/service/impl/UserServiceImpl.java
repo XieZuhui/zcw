@@ -1,7 +1,9 @@
 package cn.zcw.service.impl;
 
+import cn.zcw.bean.Datas;
 import cn.zcw.bean.Member;
 import cn.zcw.bean.MemberExample;
+import cn.zcw.bean.Permission;
 import cn.zcw.bean.User;
 import cn.zcw.bean.UserExample;
 import cn.zcw.mapper.MemberMapper;
@@ -16,6 +18,7 @@ import org.springframework.stereotype.Service;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -84,7 +87,7 @@ public class UserServiceImpl implements UserService {
      * @return
      * -1登录失败，1登录成功
      */
-    public List<User> doLogin(User user){
+    public List<User> doUserLogin(User user){
         UserExample userExample = new UserExample();
         userExample.createCriteria().andLoginacctEqualTo(user.getLoginacct());
         List<User> list = userMapper.selectByExample(userExample);
@@ -103,18 +106,36 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<Member> doMemberLogin(Member member) {
+        MemberExample memberExample = new MemberExample();
+        memberExample.createCriteria().andLoginacctEqualTo(member.getLoginacct());
+        List<Member> memberList = memberMapper.selectByExample(memberExample);
+        if(memberList.isEmpty()){
+            return null;
+        }else{
+            if(memberList.get(0).getActivationstatus()==1 &&
+                    memberList.get(0).getUserpswd().equals(member.getUserpswd())){
+                return memberList;
+            }
+            return null;
+        }
+    }
+
+    @Override
     public PageBean<User> getUserList(String querytext,Integer pageno, Integer pageSize) {
         UserExample userExample = new UserExample();
         PageBean<User> pb = new PageBean<>();
         pb.setPageno(pageno);
         pb.setPagesize(pageSize);
         if (querytext!=null && querytext.trim()!=""){
+        	
            userExample.createCriteria().andUsernameLike(querytext.trim());
            /* userExample.createCriteria().andEmailLike(querytext);
             userExample.createCriteria().andLoginacctLike(querytext);*/
         }
         userExample.setLeftLimit(pb.getPageno());
         userExample.setLimitSize(pb.getPagesize());
+        userExample.setOrderByClause("createtime DESC");
         System.out.println(userMapper.selectByExample(userExample).toString());
         pb.setTotalsize(userMapper.countByExample(userExample));
         pb.setDatas(userMapper.selectByExample(userExample));
@@ -149,4 +170,116 @@ public class UserServiceImpl implements UserService {
             mailsend.send(member.getEmail(),newvalidateCode,member.getUsername());
         }
     }
+
+    /**
+     * 1表示发送成，0表示失败
+     * @param loginacct
+     * @return
+     */
+    @Override
+    public int getBackSendMail(String loginacct) {
+        MemberExample memberExample = new MemberExample();
+        memberExample.createCriteria().andLoginacctEqualTo(loginacct);
+        List<Member> memberList = memberMapper.selectByExample(memberExample);
+        if(memberList.isEmpty()){
+            return 0;
+        }else{
+            Member member = memberList.get(0);
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+            String date = df.format(new Date());// new Date()为获取当前系统时间
+            member.setCreatetime(date);
+            //将当前系统时间进行MD5加密后生成密钥，用于用户激活操作;
+            String newvalidateCode = MD5Util.digest(date);
+            member.setValidatecode(newvalidateCode);
+            //点击找回密码操作，先将用户的激活状态设置为未激活，等待验证成功重设密码后再设置为激活
+            member.setActivationstatus(0);
+            memberMapper.updateByExampleSelective(member,memberExample);
+            mailsend.sendGetBack(member.getEmail(),newvalidateCode,member.getUsername());
+            return 1;
+        }
+    }
+
+    @Override
+    public Member getMemberByValidateCode(String validateCode) {
+        MemberExample memberExample = new MemberExample();
+        memberExample.createCriteria().andValidatecodeEqualTo(validateCode);
+        List<Member> memberList = memberMapper.selectByExample(memberExample);
+        if(memberList.isEmpty()){
+            return null;
+        }else{
+            Member member = memberList.get(0);
+            if(member.getActivationstatus()==1){
+                return null;
+            }
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String date = df.format(new Date());
+            try {
+                Date dd1 = df.parse(date);
+                Date dd2 = df.parse(member.getCreatetime());
+                long number = dd1.getTime()- dd2.getTime();
+                if(number <= 172800000){//小于48小时可以进行重设密码
+                    return member;
+                }
+                System.out.println("时间差为"+number);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            return null;
+        }
+    }
+
+    @Override
+    public int updateMemberPwd(Member member) {
+        member.setActivationstatus(1);
+        member.setValidatecode("");
+        int flag = memberMapper.updateByPrimaryKeySelective(member);
+        return flag;
+    }
+
+	@Override
+	public int insert(User user) {
+		return userMapper.insert(user);
+	}
+
+	@Override
+	public User queryById(Integer id) {
+		return userMapper.selectByPrimaryKey(id);
+	}
+
+	@Override
+	public int update(User user) {
+		return userMapper.updateByPrimaryKeySelective(user);
+	}
+
+	@Override
+	public int delete(Integer id) {
+		return userMapper.deleteByPrimaryKey(id);
+	}
+
+	@Override
+	public int deletes(Datas ds) {
+		return userMapper.deletes(ds);
+	}
+
+	@Override
+	public int insertUserRoles(Map<String, Object> maps) {
+		return userMapper.insertUserRoles(maps);
+	}
+
+	@Override
+	public int deleteUserRoles(Map<String, Object> maps) {
+		return userMapper.deleteUserRoles(maps);
+	}
+
+	@Override
+	public List<Integer> queryRoleidsByUserid(Integer id) {
+		return userMapper.queryRoleidsByUserid(id);
+	}
+
+	@Override
+	public List<Permission> queryPermissionsByUserid(Integer id) {
+		return userMapper.queryPermissionsByUserid(id);
+	}
+
+	
 }

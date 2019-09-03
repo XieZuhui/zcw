@@ -10,8 +10,18 @@ public class AJAXResult<T> {
     private boolean success;
     private PageBean<T> pageBean;
     private String username;
+    private Object data;
+    
 
-    public PageBean<T> getPageBean() {
+    public Object getData() {
+		return data;
+	}
+
+	public void setData(Object data) {
+		this.data = data;
+	}
+
+	public PageBean<T> getPageBean() {
         return pageBean;
     }
 

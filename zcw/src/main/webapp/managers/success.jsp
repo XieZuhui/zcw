@@ -43,9 +43,9 @@
     $(function () {
         var isSuccess = $("#isSuccess").val();
         if(isSuccess=="success"){
-            GoNext(5,"/managrs/login.html");
+            GoNext(5,"/managers/login.html");
         }else {
-            GoNext(5,"/index.html")
+            GoNext(5,"/index.html");
         }
     });
 

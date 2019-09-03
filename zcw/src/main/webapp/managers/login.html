@@ -46,7 +46,7 @@
           </label>
           <br>
           <label>
-            忘记密码
+              <a href="forget.html">找回密码</a>
           </label>
           <label style="float:right">
             <a href="reg.html">我要注册</a>
@@ -76,32 +76,61 @@
             return;
         }
 
+        var selected = $("#roleid").val();
+        if(selected == "user"){
+            $.ajax({
+                url:"/managers/userlogin.do",
+                type:"POST",
+                dataType:"json",
+                data:{
+                    "loginacct":loginacct.val(),
+                    "userpswd":userpswd.val()
 
-        $.ajax({
-            url:"/login.do",
-            type:"POST",
-            dataType:"json",
-            data:{
-                "loginacct":loginacct.val(),
-                "userpswd":userpswd.val()
-
-            },
-            beforeSend: function () {
-                loadingIndex = layer.msg('处理中',{icon:16});
-            },
-            success:function (result) {
-                layer.close(loadingIndex);
-                var UserRole = $("#UserRole");
-                if(result.success){
-                    window.location.href = "/managers/main1.html";
-                }else{
-                    layer.msg("用户名或密码错误，请重新输入",{time:1000,icon:5,shift:6});
+                },
+                beforeSend: function () {
+                    loadingIndex = layer.msg('处理中',{icon:16});
+                },
+                success:function (result) {
+                    layer.close(loadingIndex);
+                    var UserRole = $("#UserRole");
+                    if(result.success){
+                        window.location.href = "/managers/main.jsp";
+                    }else{
+                        layer.msg("用户名或密码错误，请重新输入",{time:1000,icon:5,shift:6});
+                    }
+                },
+                error:function () {
+                    layer.msg("用户登录失败",{time:1000,icon:5,shift:6});
                 }
-            },
-            error:function () {
-                layer.msg("用户登录失败",{time:1000,icon:5,shift:6});
-            }
-        });
+            });
+        }else {
+            $.ajax({
+                url:"/managers/memberlogin.do",
+                type:"POST",
+                dataType:"json",
+                data:{
+                    "loginacct":loginacct.val(),
+                    "userpswd":userpswd.val()
+
+                },
+                beforeSend: function () {
+                    loadingIndex = layer.msg('处理中',{icon:16});
+                },
+                success:function (result) {
+                    layer.close(loadingIndex);
+                    var UserRole = $("#UserRole");
+                    if(result.success){
+                        window.location.href = "/index.html";
+                    }else{
+                        layer.msg("用户名或密码错误或者未激活，请重试",{time:1000,icon:5,shift:6});
+                    }
+                },
+                error:function () {
+                    layer.msg("用户登录失败",{time:1000,icon:5,shift:6});
+                }
+            });
+
+        }
 
     }
     </script>

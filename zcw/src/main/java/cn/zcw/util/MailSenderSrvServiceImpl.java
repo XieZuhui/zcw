@@ -83,4 +83,13 @@ public class MailSenderSrvServiceImpl implements IMailSenderSrvServices{
         sendEmail(to,subject,content);
     }
 
+    @Override
+    public void sendGetBack(String recipient,String validateCode,String username) {
+        String to = recipient;  //收件人地址
+        String subject = "众筹网找回密码邮件";   //邮件标题
+        String content = "亲爱的"+username+",这是一个好网站<br>"+
+                "<h2><a  href = 'http://www.zcw.com/getBackPwd.do?validateCode="+validateCode+"'>点击这里找回密码</a></h2><br>" ;
+        sendEmail(to,subject,content);
+    }
+
 }
